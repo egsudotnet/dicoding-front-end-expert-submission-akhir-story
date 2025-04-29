@@ -1,6 +1,6 @@
 import NewPresenter from './new-presenter';
 import { convertBase64ToBlob } from '../../utils';
-import * as CityCareAPI from '../../data/api';
+import * as EgsuStoryAPI from '../../data/api';
 import { generateLoaderAbsoluteTemplate } from '../../templates';
 import Camera from '../../utils/camera';
 import Map from '../../utils/map';
@@ -14,20 +14,8 @@ export default class NewPage {
   #map = null;
 
   async render() {
-    return `
-      <section>
-        <div class="new-report__header">
-          <div class="container">
-            <h1 class="new-report__header__title">Buat Baru</h1>
-            <p class="new-report__header__description">
-              Silakan lengkapi formulir di bawah untuk membuat story baru.<br>
-              Pastikan story yang dibuat adalah valid.
-            </p>
-          </div>
-        </div>
-      </section>
-  
-      <section class="container">
+    return `  
+      <section class="container mt-10">
         <div class="new-form__container">
           <form id="new-form" class="new-form">
             
@@ -112,7 +100,7 @@ export default class NewPage {
   async afterRender() {
     this.#presenter = new NewPresenter({
       view: this,
-      model: CityCareAPI,
+      model: EgsuStoryAPI,
     });
     this.#takenDocumentations = [];
 
@@ -184,7 +172,7 @@ export default class NewPage {
     );
     draggableMarker.addEventListener('move', (event) => {
       const coordinate = event.target.getLatLng();
-      this.#updateLatLngInput(coordinate.latitude, coordinate.lng);
+      this.#updateLatLngInput(coordinate.lat, coordinate.lng);
     });
       
     this.#map.addMapEventListener('click', (event) => {

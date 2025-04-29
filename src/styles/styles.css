@@ -6,10 +6,10 @@
 }
 
 :root {
-  --primary-color: #d97706;
+  --primary-color: #067ad9;
   --primary-text-color: #ffffff;
-  --primary-hover-color: #b66200;
-  --primary-shadow-color: #d9770699;
+  --primary-hover-color: #086fc3;
+  --primary-shadow-color: #0567b6;
 
   --secondary-color: #6c757d;
   --secondary-text-color: #ffffff;
@@ -524,7 +524,7 @@ header {
 .story-detail__header {
   padding-block: 80px;
   min-height: 600px;
-  background-image: url('../public/images/orange-background.png');
+  background-image: url('../public/images/blue-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
@@ -662,8 +662,7 @@ header {
 }
 
 .story-detail__description__title,
-.story-detail__map__title,
-.story-detail__comments-form__title {
+.story-detail__map__title {
   margin-block-end: 12px;
   font-size: 1.5rem;
 }
@@ -692,95 +691,13 @@ header {
   align-items: center;
   gap: 10px;
 }
-
-/* Report comments section */
-.story-detail__comments__container {
-  max-width: 800px;
-  margin-block: 30px;
-  margin-inline: auto;
-}
-
-/* Report comments form */
-.story-detail__comments-form__container {
-  margin-block: 20px 40px;
-}
-
-.story-detail__comments-form__form textarea {
-  min-height: 150px;
-}
-
-.story-detail__comments-form__form button {
-  margin-block-start: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.story-detail__comments-form__loader {
-  animation: rotation 1s linear infinite;
-}
-
-/* Report comments list */
-.story-detail__comments-list__container,
-.story-detail__comments-list {
-  min-height: 150px;
-  position: relative;
-}
-
-.story-detail__comments-list {
-  margin-block: 30px;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-}
-
-.story-detail__comments-list__empty {
-  text-align: center;
-}
-
-.story-detail__comment-item {
-  display: flex;
-  gap: 20px;
-}
-
-.story-detail__comment-item__photo {
-  aspect-ratio: 1 / 1;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-
-  align-self: start;
-}
-
-.story-detail__comment-item__body {
-  flex-grow: 1;
-}
-
-.story-detail__comment-item__body__more-info {
-  margin-block-end: 8px;
-  display: flex;
-  gap: 12px;
-
-  color: #555;
-}
-
-.story-detail__comment-item__body__author {
-  font-weight: 600;
-  color: #09090b;
-}
-
-.story-detail__comment-item__body__text {
-  color: #5d5d5d;
-}
-/* Report comments section */
 /* END OF DETAIL PAGE */
 
 /* NEW STORY FORM */
 .new-report__header {
   padding-block: 70px;
   background-color: #d9770626;
-  background-image: url('../public/images/orange-background.png');
+  background-image: url('../public/images/blue-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;

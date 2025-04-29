@@ -45,39 +45,6 @@ export default class ReportDetailPresenter {
     }
   }
 
-  async getCommentsList() {
-    this.#view.showCommentsLoading();
-    try {
-      const response = await this.#apiModel.getAllCommentsByReportId(this.#reportId);
-      this.#view.populateReportDetailComments(response.message, response.data);
-    } catch (error) {
-      console.error('getCommentsList: error:', error);
-      this.#view.populateCommentsListError(error.message);
-    } finally {
-      this.#view.hideCommentsLoading();
-    }
-  }
-
-  async postNewComment({ body }) {
-    this.#view.showSubmitLoadingButton();
-    try {
-      const response = await this.#apiModel.storeNewCommentByReportId(this.#reportId, { body });
-
-      if (!response.ok) {
-        console.error('postNewComment: response:', response);
-        this.#view.postNewCommentFailed(response.message);
-        return;
-      }
-
-      this.#view.postNewCommentSuccessfully(response.message, response.data);
-    } catch (error) {
-      console.error('postNewComment: error:', error);
-      this.#view.postNewCommentFailed(error.message);
-    } finally {
-      this.#view.hideSubmitLoadingButton();
-    }
-  }
-
   #isReportSaved() {
     return false;
   }

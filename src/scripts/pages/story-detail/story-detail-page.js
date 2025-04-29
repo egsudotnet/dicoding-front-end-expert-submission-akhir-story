@@ -9,7 +9,7 @@ import { createCarousel } from '../../utils';
 import ReportDetailPresenter from './story-detail-presenter';
 import { parseActivePathname } from '../../routes/url-parser';
 import Map from '../../utils/map';
-import * as CityCareAPI from '../../data/api';
+import * as EgsuStoryAPI from '../../data/api';
 
 export default class ReportDetailPage {
   #presenter = null;
@@ -36,7 +36,7 @@ export default class ReportDetailPage {
   async afterRender() {
     this.#presenter = new ReportDetailPresenter(parseActivePathname().id, {
       view: this,
-      apiModel: CityCareAPI,
+      apiModel: EgsuStoryAPI,
     });
  
 

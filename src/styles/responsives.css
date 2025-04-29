@@ -64,6 +64,10 @@
   .new-form__documentations__outputs {
     grid-template-columns: repeat(2, minmax(200px, 300px));
   }
+  
+  .mt-10{
+    margin-top: 10px
+  }
 }
 
 @media screen and (width > 800px) {
@@ -94,6 +98,10 @@
   /* FOOTER */
   .footer-content {
     justify-content: space-between;
+  }
+  
+  .mt-10{
+    margin-top: 10px
   }
 }
 
@@ -141,5 +149,9 @@
 
   .story-detail__images {
     height: 600px;
+  }
+  
+  .mt-10{
+    margin-top: 10px
   }
 }

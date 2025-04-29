@@ -14,12 +14,12 @@ export function generateLoaderAbsoluteTemplate() {
 
 export function generateMainNavigationListTemplate() {
   return ` 
+    <li><a id="home-button" href="#/">Daftar Story</a></li>
   `;
 }
 
 export function generateUnauthenticatedNavigationListTemplate() {
   return `
-    <li id="push-notification-tools" class="push-notification-tools"></li>
     <li><a id="login-button" href="#/login">Login</a></li>
     <li><a id="register-button" href="#/register">Register</a></li>
   `;
@@ -27,7 +27,6 @@ export function generateUnauthenticatedNavigationListTemplate() {
 
 export function generateAuthenticatedNavigationListTemplate() {
   return `
-    <li id="push-notification-tools" class="push-notification-tools"></li>
     <li><a id="new-story-button" class="btn new-story-button" href="#/new">Buat Baru<i class="fas fa-plus"></i></a></li>
     <li><a id="logout-button" class="logout-button" href="#/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
   `;
@@ -60,25 +59,6 @@ export function generateReportDetailErrorTemplate(message) {
   `;
 }
 
-export function generateCommentsListEmptyTemplate() {
-  return `
-    <div id="story-detail-comments-list-empty" class="story-detail__comments-list__empty">
-      <h2>Tidak ada komentar yang tersedia</h2>
-      <p>Saat ini, tidak ada komentar yang dapat ditampilkan.</p>
-    </div>
-  `;
-}
-
-export function generateCommentsListErrorTemplate(message) {
-  return `
-    <div id="story-detail-comments-list-error" class="story-detail__comments-list__error">
-      <h2>Terjadi kesalahan pengambilan daftar komentar</h2>
-      <p>${message ? message : 'Gunakan jaringan lain atau laporkan error ini.'}</p>
-    </div>
-  `;
-}
-
-
 export function generateReportItemTemplate({  
   createdAt,
   description ,
@@ -99,7 +79,7 @@ export function generateReportItemTemplate({
     <div tabindex="0" class="story-item" data-reportid="${id}">
       <div class="story-item__body">
         <div class="story-item__main">
-        <img class="story-item__image" src="${photoUrl}" alt="">
+        <img class="story-item__image" src="${photoUrl}" alt="${description}">
           <h2 id="story-title" class="story-item__title">${description}</h2>
           <div class="story-item__more-info">
             <div class="story-item__createdat">
@@ -169,24 +149,6 @@ export function generateReportDetailImageTemplate(imageUrl = null, alt = '') {
 
   return `
     <img class="story-detail__image" src="${imageUrl}" alt="${alt}">
-  `;
-}
-
-export function generateReportCommentItemTemplate({ photoUrlCommenter, nameCommenter, body }) {
-  return `
-    <article tabindex="0" class="story-detail__comment-item">
-      <img
-        class="story-detail__comment-item__photo"
-        src="${photoUrlCommenter}"
-        alt="Commenter name: ${nameCommenter}"
-      >
-      <div class="story-detail__comment-item__body">
-        <div class="story-detail__comment-item__body__more-info">
-          <div class="story-detail__comment-item__body__author">${nameCommenter}</div>
-        </div>
-        <div class="story-detail__comment-item__body__text">${body}</div>
-      </div>
-    </article>
   `;
 }
 
