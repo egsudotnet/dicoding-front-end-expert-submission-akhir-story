@@ -1,1 +1,8 @@
 https://cloud.maptiler.com/account/keys/
+
+https://<USERNAME>.github.io/<NAMA_REPO>
+https://egsudotnet.github.io/dicoding-front-end-expert-submission-akhir-story
+
+
+https://egsudotnet.github.io/dicoding-front-end-expert-submission-akhir-story/#/stories/story-Xhaexz_r2YyCbGPZ
+https://zingy-mermaid-3bb149.netlify.app/#/login
