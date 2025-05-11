@@ -119,7 +119,7 @@ export default class NewPage {
         latitude: this.#form.elements.namedItem('latitude').value,
         longitude : this.#form.elements.namedItem('longitude').value,
       };
-      await this.#presenter.postNewReport(data);
+      await this.#presenter.postNewStory(data);
     });
 
     document.getElementById('documentations-input').addEventListener('change', async (event) => {

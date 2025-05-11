@@ -7,11 +7,12 @@ const ENDPOINTS = {
   LOGIN: `${BASE_URL}/login`,
   MY_USER_INFO: `${BASE_URL}/users/me`,
 
-  // Report
+  // Story
   STORY_LIST: `${BASE_URL}/stories`,
   STORY_DETAIL: (id) => `${BASE_URL}/stories/${id}`,
   STORE_NEW_STORY: `${BASE_URL}/stories`,
- 
+  SUBSCRIBE: `${BASE_URL}/notifications/subscribe`,
+   
 };
 
 export async function getRegistered({ name, email, password }) {
@@ -82,7 +83,7 @@ export async function getAllStories() {
   };
 }
 
-export async function getReportById(id) {
+export async function getStoryById(id) {
   const accessToken = getAccessToken();
 
   const fetchResponse = await fetch(ENDPOINTS.STORY_DETAIL(id), {
@@ -99,7 +100,7 @@ export async function getReportById(id) {
   };
 }
 
-export async function storeNewReport({
+export async function storeNewStory({
   description,
   photo,
   latitude,
@@ -122,6 +123,50 @@ export async function storeNewReport({
   });
   const json = await fetchResponse.json();
 
+  return {
+    ...json,
+    ok: fetchResponse.ok,
+  };
+}
+
+
+export async function subscribePushNotification({ endpoint, keys: { p256dh, auth } }) {
+  const accessToken = getAccessToken();
+  const data = JSON.stringify({
+    endpoint,
+    keys: { p256dh, auth },
+  });
+ 
+  const fetchResponse = await fetch(ENDPOINTS.SUBSCRIBE, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    },
+    body: data,
+  });
+  const json = await fetchResponse.json();
+ 
+  return {
+    ...json,
+    ok: fetchResponse.ok,
+  };
+}
+ 
+export async function unsubscribePushNotification({ endpoint }) {
+  const accessToken = getAccessToken();
+  const data = JSON.stringify({ endpoint });
+ 
+  const fetchResponse = await fetch(ENDPOINTS.SUBSCRIBE, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    },
+    body: data,
+  });
+  const json = await fetchResponse.json();
+ 
   return {
     ...json,
     ok: fetchResponse.ok,

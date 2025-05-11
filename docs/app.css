@@ -694,7 +694,7 @@ header {
 /* END OF DETAIL PAGE */
 
 /* NEW STORY FORM */
-.new-report__header {
+.new-story__header {
   padding-block: 70px;
   background-color: #d9770626;
   background-image: url(ffbb322f3bc867a9bc37.jpg);
@@ -704,7 +704,7 @@ header {
   text-align: center;
 }
 
-.new-report__header__title {
+.new-story__header__title {
   margin-block-end: 16px;
 }
 
@@ -902,7 +902,7 @@ footer {
     border: 1px solid #d4d4d4;
   }
 
-  /* Report detail */
+  /* Story detail */
   .story-detail__images {
     height: 400px;
   }
@@ -936,7 +936,7 @@ footer {
     grid-template-columns: repeat(2, minmax(300px, 1fr));
   }
 
-  /* Report detail */
+  /* Story detail */
   .story-detail__body-container {
     inset-block-start: -200px;
   }

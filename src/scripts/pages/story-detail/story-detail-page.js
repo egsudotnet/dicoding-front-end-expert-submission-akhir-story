@@ -1,17 +1,18 @@
 import {
   generateLoaderAbsoluteTemplate,
-  generateRemoveReportButtonTemplate,
-  generateReportDetailErrorTemplate,
-  generateReportDetailTemplate,
-  generateSaveReportButtonTemplate,
+  generateRemoveStoryButtonTemplate,
+  generateStoryDetailErrorTemplate,
+  generateStoryDetailTemplate,
+  generateSaveStoryButtonTemplate,
 } from '../../templates';
 import { createCarousel } from '../../utils';
-import ReportDetailPresenter from './story-detail-presenter';
+import StoryDetailPresenter from './story-detail-presenter';
 import { parseActivePathname } from '../../routes/url-parser';
 import Map from '../../utils/map';
 import * as EgsuStoryAPI from '../../data/api';
+import Database from '../../data/database';
 
-export default class ReportDetailPage {
+export default class StoryDetailPage {
   #presenter = null;
   #form = null;
   #map = null;
@@ -34,17 +35,18 @@ export default class ReportDetailPage {
   }
 
   async afterRender() {
-    this.#presenter = new ReportDetailPresenter(parseActivePathname().id, {
+    this.#presenter = new StoryDetailPresenter(parseActivePathname().id, {
       view: this,
       apiModel: EgsuStoryAPI,
+      dbModel: Database,
     });
  
 
-    this.#presenter.showReportDetail();
+    this.#presenter.showStoryDetail();
   }
 
-  async populateReportDetailAndInitialMap(message, story) {
-    document.getElementById('story-detail').innerHTML = generateReportDetailTemplate({ 
+  async populateStoryDetailAndInitialMap(message, story) {
+    document.getElementById('story-detail').innerHTML = generateStoryDetailTemplate({ 
       
       title: story.description,
       description: story.description,
@@ -62,32 +64,88 @@ export default class ReportDetailPage {
     createCarousel(document.getElementById('images'));
 
     // Map
-    await this.#presenter.showReportDetailMap();
+    await this.#presenter.showStoryDetailMap();
 
     if (this.#map) {
-      const reportCoordinate = [story.latitude, story.longitude];
+      const storyCoordinate = [story.latitude, story.longitude];
       const markerOptions = { alt: story.description };
       const popupOptions = { content: story.description };
-      this.#map.changeCamera(reportCoordinate);
-      this.#map.addMarker(reportCoordinate, markerOptions, popupOptions);
+      this.#map.changeCamera(storyCoordinate);
+      this.#map.addMarker(storyCoordinate, markerOptions, popupOptions);
     }
+
+    // Actions buttons
+    this.#presenter.showSaveButton();
+    this.addNotifyMeEventListener();
   }
 
-  populateReportDetailError(message) {
-    document.getElementById('story-detail').innerHTML = generateReportDetailErrorTemplate(message);
+  populateStoryDetailError(message) {
+    document.getElementById('story-detail').innerHTML = generateStoryDetailErrorTemplate(message);
   }
 
 
+
+  #setupForm() {
+    this.#form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const data = {
+        body: this.#form.elements.namedItem('body').value,
+      };
+      await this.#presenter.postNewComment(data);
+    });
+  }
   clearForm() {
     this.#form.reset();
   }
 
-  showReportDetailLoading() {
+  renderSaveButton() {
+    document.getElementById('save-actions-container').innerHTML =
+      generateSaveStoryButtonTemplate();
+
+    document.getElementById('story-detail-save').addEventListener('click', async () => {
+      // // // alert('Fitur simpan laporan akan segera hadir!');
+      await this.#presenter.saveStory();
+      await this.#presenter.showSaveButton();
+    });
+  }
+
+  saveToBookmarkSuccessfully(message) {
+    console.log(message);
+  }
+  saveToBookmarkFailed(message) {
+    alert(message);
+  }
+
+  renderRemoveButton() {
+    document.getElementById('save-actions-container').innerHTML =
+      generateRemoveStoryButtonTemplate();
+
+    document.getElementById('story-detail-remove').addEventListener('click', async () => {
+      await this.#presenter.removeStory();
+      await this.#presenter.showSaveButton();
+    });
+  }
+
+  addNotifyMeEventListener() {
+    document.getElementById('story-detail-notify-me').addEventListener('click', () => {
+      this.#presenter.notifyMe();
+    });
+  }
+
+  removeFromBookmarkSuccessfully(message) {
+    console.log(message);
+  }
+  removeFromBookmarkFailed(message) {
+    alert(message);
+  }
+  
+  showStoryDetailLoading() {
     document.getElementById('story-detail-loading-container').innerHTML =
       generateLoaderAbsoluteTemplate();
   }
 
-  hideReportDetailLoading() {
+  hideStoryDetailLoading() {
     document.getElementById('story-detail-loading-container').innerHTML = '';
   }
 

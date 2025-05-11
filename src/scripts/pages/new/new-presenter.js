@@ -18,29 +18,48 @@ export default class NewPresenter {
     }
   }
 
-  async postNewReport({ description, photo, latitude, longitude }) {
+  async postNewStory({ description, photo, latitude, longitude }) {
     this.#view.showSubmitLoadingButton();
     try {
       const data = {
         description: description,
-        photo : photo,
+        photo: photo,
         latitude: latitude,
-        longitude : longitude
+        longitude: longitude
       };
-      const response = await this.#model.storeNewReport(data);
+      const response = await this.#model.storeNewStory(data);
 
       if (!response.ok) {
-        console.error('postNewReport: response:', response);
+        console.error('postNewStory: response:', response);
         this.#view.storeFailed(response.message);
         return;
       }
 
+      // No need to wait response
+      this.#notifyToAllUser(response.message);
+
       this.#view.storeSuccessfully(response.message, response.data);
     } catch (error) {
-      console.error('postNewReport: error:', error);
+      console.error('postNewStory: error:', error);
       this.#view.storeFailed(error.message);
     } finally {
       this.#view.hideSubmitLoadingButton();
     }
   }
+
+  async #notifyToAllUser(storyId) {
+    try {
+      const response = await this.#model.sendStoryToAllUserViaNotification(storyId);
+      if (!response.ok) {
+        console.error('#notifyToAllUser: response:', response);
+        return false;
+      }
+      return true;
+    } catch (error) {
+      console.error('#notifyToAllUser: error:', error);
+      return false;
+    }
+  }
+
+
 }

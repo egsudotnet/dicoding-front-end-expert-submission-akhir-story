@@ -694,7 +694,7 @@ header {
 /* END OF DETAIL PAGE */
 
 /* NEW STORY FORM */
-.new-report__header {
+.new-story__header {
   padding-block: 70px;
   background-color: #d9770626;
   background-image: url('../public/images/blue-background.jpg');
@@ -704,7 +704,7 @@ header {
   text-align: center;
 }
 
-.new-report__header__title {
+.new-story__header__title {
   margin-block-end: 16px;
 }
 

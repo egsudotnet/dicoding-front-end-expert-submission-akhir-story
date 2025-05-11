@@ -15,11 +15,13 @@ export function generateLoaderAbsoluteTemplate() {
 export function generateMainNavigationListTemplate() {
   return ` 
     <li><a id="home-button" href="#/">Daftar Story</a></li>
+    <li><a id="bookmark-button" class="bookmark-button" href="#/bookmark">Laporan Tersimpan</a></li>
   `;
 }
 
 export function generateUnauthenticatedNavigationListTemplate() {
   return `
+    <li id="push-notification-tools" class="push-notification-tools"></li>
     <li><a id="login-button" href="#/login">Login</a></li>
     <li><a id="register-button" href="#/register">Register</a></li>
   `;
@@ -27,7 +29,8 @@ export function generateUnauthenticatedNavigationListTemplate() {
 
 export function generateAuthenticatedNavigationListTemplate() {
   return `
-    <li><a id="new-story-button" class="btn new-story-button" href="#/new">Buat Baru<i class="fas fa-plus"></i></a></li>
+    <li id="push-notification-tools" class="push-notification-tools"></li>
+    <li><a id="new-story-button" class="btn new-story-button" href="#/new">Buat Laporan <i class="fas fa-plus"></i></a></li>
     <li><a id="logout-button" class="logout-button" href="#/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
   `;
 }
@@ -36,7 +39,7 @@ export function generateStoriesListEmptyTemplate() {
   return `
     <div id="stories-list-empty" class="stories-list__empty">
       <h2>Tidak ada story yang tersedia</h2>
-      <p>Saat ini, tidak ada story kerusakan fasilitas umum yang dapat ditampilkan.</p>
+      <p>Saat ini, tidak ada story yang dapat ditampilkan.</p>
     </div>
   `;
 }
@@ -50,7 +53,7 @@ export function generateStoriesListErrorTemplate(message) {
   `;
 }
 
-export function generateReportDetailErrorTemplate(message) {
+export function generateStoryDetailErrorTemplate(message) {
   return `
     <div id="stories-detail-error" class="stories-detail__error">
       <h2>Terjadi kesalahan pengambilan detail story</h2>
@@ -59,7 +62,7 @@ export function generateReportDetailErrorTemplate(message) {
   `;
 }
 
-export function generateReportItemTemplate({  
+export function generateStoryItemTemplate({  
   createdAt,
   description ,
   id ,
@@ -76,7 +79,7 @@ export function generateReportItemTemplate({
 
   // // // <img class="story-item__image" src="${evidenceImages[0]}" alt="${title}">
   return `
-    <div tabindex="0" class="story-item" data-reportid="${id}">
+    <div tabindex="0" class="story-item" data-storyid="${id}">
       <div class="story-item__body">
         <div class="story-item__main">
         <img class="story-item__image" src="${photoUrl}" alt="${description}">
@@ -140,7 +143,7 @@ export function generateDamageLevelBadge(damageLevel) {
   return '';
 }
 
-export function generateReportDetailImageTemplate(imageUrl = null, alt = '') {
+export function generateStoryDetailImageTemplate(imageUrl = null, alt = '') {
   if (!imageUrl) {
     return `
       <img class="story-detail__image" src="images/placeholder-image.jpg" alt="Placeholder Image">
@@ -152,7 +155,7 @@ export function generateReportDetailImageTemplate(imageUrl = null, alt = '') {
   `;
 }
 
-export function generateReportDetailTemplate({
+export function generateStoryDetailTemplate({
   title,
   description,
   photoUrl,
@@ -164,10 +167,10 @@ export function generateReportDetailTemplate({
 
 }) {
   const createdAtFormatted = showFormattedDate(createdAt, 'id-ID'); 
-  const imagesHtml = generateReportDetailImageTemplate(photoUrl, title)
+  const imagesHtml = generateStoryDetailImageTemplate(photoUrl, title)
   // photoUrl.reduce(
   //   (accumulator, photoUrl) =>
-  //     accumulator.concat(generateReportDetailImageTemplate(photoUrl, title)),
+  //     accumulator.concat(generateStoryDetailImageTemplate(photoUrl, title)),
   //   '',
   // );
 
@@ -211,7 +214,20 @@ export function generateReportDetailTemplate({
             <div id="map-loading-container"></div>
           </div>
         </div>
-   
+  
+        <hr>
+  
+        <div class="story-detail__body__actions__container">
+          <h2>Aksi</h2>
+          <div class="story-detail__actions__buttons">
+            <div id="save-actions-container"></div>
+            <div id="notify-me-actions-container">
+              <button id="story-detail-notify-me" class="btn btn-transparent">
+                Try Notify Me <i class="far fa-bell"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -233,7 +249,7 @@ export function generateUnsubscribeButtonTemplate() {
   `;
 }
 
-export function generateSaveReportButtonTemplate() {
+export function generateSaveStoryButtonTemplate() {
   return `
     <button id="story-detail-save" class="btn btn-transparent">
       Simpan story <i class="far fa-bookmark"></i>
@@ -241,7 +257,7 @@ export function generateSaveReportButtonTemplate() {
   `;
 }
 
-export function generateRemoveReportButtonTemplate() {
+export function generateRemoveStoryButtonTemplate() {
   return `
     <button id="story-detail-remove" class="btn btn-transparent">
       Buang story <i class="fas fa-bookmark"></i>

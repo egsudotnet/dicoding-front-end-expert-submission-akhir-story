@@ -4,14 +4,15 @@ import {
   generateStoriesListEmptyTemplate,
   generateStoriesListErrorTemplate,
 } from '../../templates';
-import HomePresenter from './home-presenter';
+import BookmarkPresenter from './bookmark-presenter';
+import Database from '../../data/database';
 import Map from '../../utils/map';
-import * as EgsuStoryAPI from '../../data/api';
-
-export default class HomePage {
+ 
+export default class BookmarkPage {
   #presenter = null;
+  #form = null;
   #map = null;
-
+  
   async render() {
     return `
       <section>
@@ -20,8 +21,10 @@ export default class HomePage {
           <div id="map-loading-container"></div>
         </div>
       </section>
-
+ 
       <section class="container">
+        <h1 class="section-title">Daftar Story Tersimpan</h1>
+ 
         <div class="stories-list__container">
           <div id="stories-list"></div>
           <div id="stories-list-loading-container"></div>
@@ -29,76 +32,69 @@ export default class HomePage {
       </section>
     `;
   }
+ 
+  async afterRender() {
+    this.#presenter = new BookmarkPresenter({
+      view: this,
+      model: Database,
+    });
+    await this.#presenter.initialGalleryAndMap();
+  }
+ 
+  populateBookmarkedStories(message, stories) {
+    if (stories.length <= 0) {
+      this.populateBookmarkedStoriesListEmpty();
+      return;
+    }
+ 
+    const html = stories.reduce((accumulator, story) => {
+      if (this.#map) {
+        const coordinate = [story.location.latitude, story.location.longitude];
+        const markerOptions = { alt: story.title };
+        const popupOptions = { content: story.title };
+        this.#map.addMarker(coordinate, markerOptions, popupOptions);
+      }
 
+      return accumulator.concat(
+        generateStoryItemTemplate({
+          ...story,
+          placeNameLocation: story.location.placeName,
+          storyName: story.name,
+        }),
+      );
+    }, '');
+ 
+    document.getElementById('stories-list').innerHTML = `
+      <div class="stories-list">${html}</div>
+    `;
+  }
+ 
+  populateBookmarkedStoriesListEmpty() {
+    document.getElementById('stories-list').innerHTML = generateStoriesListEmptyTemplate();
+  }
+ 
+  populateBookmarkedStoriesError(message) {
+    document.getElementById('stories-list').innerHTML = generateStoriesListErrorTemplate(message);
+  }
+ 
+  showStoriesListLoading() {
+    document.getElementById('stories-list-loading-container').innerHTML =
+      generateLoaderAbsoluteTemplate();
+  }
+ 
   async initialMap() {
     this.#map = await Map.build('#map', {
       zoom: 10,
       locate: true,
     });
   }
-
-  async afterRender() {
-    this.#presenter = new HomePresenter({
-      view: this,
-      model: EgsuStoryAPI,
-    });
- 
-    await this.#presenter.initialGalleryAndMap();
-  }
-
-  populateStoriesList(message, stories) {
-    if (stories.length <= 0) {
-      this.populateStoriesListEmpty();
-      return;
-    }
-
-    const html = stories.reduce((accumulator, story) => {
-      if (this.#map) {
-        const coordinate = [story.latitude, story.longitude];
-        const markerOptions = { alt: story.description };
-        const popupOptions = { content: story.description };
-        this.#map.addMarker(coordinate, markerOptions, popupOptions);
-      }
-      
-      return accumulator.concat(
-        generateStoryItemTemplate({
-          ...story,
-          storyName: story.name,
-        }),
-      );
-    }, '');
-
-    document.getElementById('stories-list').innerHTML = `
-      <div class="stories-list">${html}</div>
-    `;
-  }
-
-  populateStoriesListEmpty() {
-    document.getElementById('stories-list').innerHTML = generateStoriesListEmptyTemplate();
-  }
-
-  populateStoriesListError(message) {
-    document.getElementById('stories-list').innerHTML = generateStoriesListErrorTemplate(message);
-  }
-
-  // async initialMap() {
-  //   // TODO: map initialization
-  // }
-
   showMapLoading() {
     document.getElementById('map-loading-container').innerHTML = generateLoaderAbsoluteTemplate();
   }
-
   hideMapLoading() {
     document.getElementById('map-loading-container').innerHTML = '';
   }
-
-  showLoading() {
-    document.getElementById('stories-list-loading-container').innerHTML =
-      generateLoaderAbsoluteTemplate();
-  }
-
-  hideLoading() {
+  hideStoriesListLoading() {
     document.getElementById('stories-list-loading-container').innerHTML = '';
   }
 }
