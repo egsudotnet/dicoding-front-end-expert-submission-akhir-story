@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await registerServiceWorker();
 
   // for demonstration purpose-only
-  console.log('Berhasil mendaftarkan service worker.');
+  console.log('Berhasil mendaftarkan service worker...');
   
   window.addEventListener('hashchange', async () => {
     await app.renderPage();

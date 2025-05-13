@@ -31,9 +31,10 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin(), 
-    new MiniCssExtractPlugin(),  
+    new MiniCssExtractPlugin(), 
+
     // // // new GenerateSW({
-    // // //   swDest: 'sw.workbox.bundle.js',
+    // // //   swDest: 'sw.bundle.js',
     // // // }),
 
     
