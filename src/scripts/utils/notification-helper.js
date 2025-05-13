@@ -94,8 +94,6 @@ export async function subscribe() {
         // Undo subscribe to push notification
         await pushSubscription.unsubscribe();
 
-        // Undo subscribe to push notification
-        await pushSubscription.unsubscribe();
     }
 }
 

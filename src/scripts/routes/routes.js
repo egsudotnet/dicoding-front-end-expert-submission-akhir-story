@@ -5,6 +5,7 @@ import BookmarkPage from '../pages/bookmark/bookmark-page';
 import StoryDetailPage from '../pages/story-detail/story-detail-page';
 import NewPage from '../pages/new/new-page';
 import { checkAuthenticatedRoute, checkUnauthenticatedRouteOnly } from '../utils/auth';
+// // // import NotFoundPage from '../pages/not-found/not-found-page'; // Import the Not Found page
 
 export const routes = {
   '/login': () => checkUnauthenticatedRouteOnly(new LoginPage()),
