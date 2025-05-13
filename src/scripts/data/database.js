@@ -1,6 +1,6 @@
 import { openDB } from 'idb';
  
-const DATABASE_NAME = 'citycare';
+const DATABASE_NAME = 'egsustory';
 const DATABASE_VERSION = 1;
 const OBJECT_STORE_NAME = 'saved-reports';
  

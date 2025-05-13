@@ -2,48 +2,64 @@
   "id": "/#/",
   "start_url": "/#/",
   "scope": "/",
-  "name": "CityCare App",
-  "short_name": "CityCare",
+  "name": "EgSuStory App",
+  "short_name": "EgSuStory",
   "description": "Aplikasi pelaporan kerusakan fasilitas umum yang memungkinkan warga Indonesia melaporkan masalah secara langsung kepada pemerintah kota. Dengan aplikasi ini, komunikasi antara warga dan pemerintah menjadi lebih efisien dalam menangani dan menindaklanjuti laporan kerusakan fasilitas umum.",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#d97706",
   "icons": [
     {
-      "src": "images/icons/icon-x144.png",
+      "src": "images/icons/mipmap-xxhdpi/ic_launcher.png",
       "type": "image/png",
       "sizes": "144x144",
       "purpose": "any"
     },
     {
-      "src": "images/icons/maskable-icon-x48.png",
+      "src": "images/icons/mipmap-mdpi/ic_launcher.png",
       "type": "image/png",
       "sizes": "48x48",
       "purpose": "maskable"
     },
     {
-      "src": "images/icons/maskable-icon-x96.png",
+      "src": "images/icons/mipmap-xhdpi/ic_launcher.png",
       "type": "image/png",
       "sizes": "96x96",
       "purpose": "maskable"
     },
     {
-      "src": "images/icons/maskable-icon-x192.png",
+      "src": "images/icons/mipmap-xxxhdpi/ic_launcher.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "images/screenshots/ss_001.png",
+      "sizes": "1153x954",
+      "type": "image/png",
+      "form_factor": "wide"
     },
     {
-      "src": "images/icons/maskable-icon-x384.png",
+      "src": "images/screenshots/ss_002.png",
+      "sizes": "1183x960",
       "type": "image/png",
-      "sizes": "384x384",
-      "purpose": "maskable"
+      "form_factor": "wide"
     },
     {
-      "src": "images/icons/maskable-icon-x512.png",
+      "src": "images/screenshots/ss_003.png",
+      "sizes": "1000x947",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/screenshots/ss_004.png",
+      "sizes": "1011x835",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ]
+
 }
