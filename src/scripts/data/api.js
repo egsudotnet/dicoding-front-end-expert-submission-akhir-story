@@ -13,6 +13,9 @@ const ENDPOINTS = {
   STORE_NEW_STORY: `${BASE_URL}/stories`,
   SUBSCRIBE: `${BASE_URL}/notifications/subscribe`,
    
+  SEND_STORY_TO_ME: (storiyId) => `${BASE_URL}/stories/${storiyId}/notify-me`,
+  SEND_STORY_TO_USER: (storiyId) => `${BASE_URL}/stories/${storiyId}/notify`,
+  SEND_STORY_TO_ALL_USER: (storiyId) => `${BASE_URL}/stories/${storiyId}/notify-all`
 };
 
 export async function getRegistered({ name, email, password }) {
@@ -172,3 +175,62 @@ export async function unsubscribePushNotification({ endpoint }) {
     ok: fetchResponse.ok,
   };
 }
+
+/////
+
+export async function sendStoryToMeViaNotification(storyId) {
+  const accessToken = getAccessToken();
+
+  const fetchResponse = await fetch(ENDPOINTS.SEND_STORY_TO_ME(storyId), {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const json = await fetchResponse.json();
+
+  return {
+    ...json,
+    ok: fetchResponse.ok,
+  };
+}
+
+export async function sendStoryToUserViaNotification(storyId, { userId }) {
+  const accessToken = getAccessToken();
+  const data = JSON.stringify({
+    userId,
+  });
+
+  const fetchResponse = await fetch(ENDPOINTS.SEND_STORY_TO_USER(storyId), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    },
+    body: data,
+  });
+  const json = await fetchResponse.json();
+
+  return {
+    ...json,
+    ok: fetchResponse.ok,
+  };
+}
+
+export async function sendStoryToAllUserViaNotification(storyId) {
+  const accessToken = getAccessToken();
+
+  const fetchResponse = await fetch(ENDPOINTS.SEND_STORY_TO_ALL_USER(storyId), {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const json = await fetchResponse.json();
+
+  return {
+    ...json,
+    ok: fetchResponse.ok,
+  };
+}
+ 
