@@ -1,2 +1,2 @@
-MAP_SERVICE_API_KEY = 'TFpnIgbaOZzJsPMJDBGb'
-URL hasil deploymen = https://zingy-mermaid-3bb149.netlify.app/#/login
+MAP_SERVICE_API_KEY = TFpnIgbaOZzJsPMJDBGb
+URL hasil deploymen = https://egsudotnet.github.io/dicoding-front-end-expert-submission-akhir-story
