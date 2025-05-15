@@ -4,8 +4,8 @@ import HomePage from '../pages/home/home-page';
 import BookmarkPage from '../pages/bookmark/bookmark-page';
 import StoryDetailPage from '../pages/story-detail/story-detail-page';
 import NewPage from '../pages/new/new-page';
+import NotFoundPage from '../pages/not-found/not-found-page'; // Import the Not Found page
 import { checkAuthenticatedRoute, checkUnauthenticatedRouteOnly } from '../utils/auth';
-// // // import NotFoundPage from '../pages/not-found/not-found-page'; // Import the Not Found page
 
 export const routes = {
   '/login': () => checkUnauthenticatedRouteOnly(new LoginPage()),
@@ -15,4 +15,6 @@ export const routes = {
   '/new': () => checkAuthenticatedRoute(new NewPage()),
   '/stories/:id': () => checkAuthenticatedRoute(new StoryDetailPage()),
   '/bookmark': () => checkAuthenticatedRoute(new BookmarkPage()),
+  '/not-found': () => new NotFoundPage(),
+  '*': () => new NotFoundPage(),
 };

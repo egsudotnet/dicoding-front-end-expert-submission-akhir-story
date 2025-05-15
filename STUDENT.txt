@@ -1,1 +1,2 @@
-TFpnIgbaOZzJsPMJDBGb
+MAP_SERVICE_API_KEY = 'TFpnIgbaOZzJsPMJDBGb'
+URL hasil deploymen = https://zingy-mermaid-3bb149.netlify.app/#/login

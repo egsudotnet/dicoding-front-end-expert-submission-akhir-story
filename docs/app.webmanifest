@@ -1,0 +1,59 @@
+{
+  "id": "/#/",
+  "start_url": "/#/new",
+  "scope": "/",
+  "name": "EgSuStory App",
+  "short_name": "EgSuStory",
+  "description": "Aplikasi pelaporan kerusakan fasilitas umum yang memungkinkan warga Indonesia melaporkan masalah secara langsung kepada pemerintah kota. Dengan aplikasi ini, komunikasi antara warga dan pemerintah menjadi lebih efisien dalam menangani dan menindaklanjuti laporan kerusakan fasilitas umum.",
+  "display": "standalone",
+  "background_color": "#e6f2ff",
+  "theme_color": "#80bfff",
+  "icons": [
+    {
+      "src": "images/icons/mipmap-xxhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/mipmap-mdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "48x48",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/icons/mipmap-xhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "96x96",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/icons/mipmap-xxxhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "images/screenshots/ss_001.png",
+      "sizes": "1280x695",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/screenshots/ss_002.png",
+      "sizes": "1280x711",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/screenshots/ss-m-001.png",
+      "sizes": "715x1267",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]    
+
+}

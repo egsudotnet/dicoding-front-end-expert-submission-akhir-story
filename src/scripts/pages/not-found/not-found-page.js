@@ -1,10 +1,14 @@
-// src/pages/not-found/not-found-page.js
-class NotFoundPage {
-  render() {
-    const element = document.createElement('div');
-    element.innerHTML = '<h1>404 - Page Not Found</h1>';
-    return element;
-  }
-}
+export default class NotFoundPage {
 
-export default NotFoundPage;
+  async render() {
+    return `
+      <section>
+        <center>
+          <img src="../images/Error404.png" alt="404 Not Found" class="not-found__image">
+          <h1>Halaman Tidak Ditemukan</h1>
+        </center>
+      </section>
+    `;
+  }
+
+}
