@@ -14,7 +14,7 @@ import {
 } from '../utils';
 
 import { getAccessToken, getLogout } from '../utils/auth';
-import { routes } from '../routes/routes';
+import { routes, getRouteHandler } from '../routes/routes';
 
 import {
   isCurrentPushSubscriptionAvailable,
@@ -114,11 +114,14 @@ export default class App {
   }
  
   async renderPage() {
-    const url = getActiveRoute();
-    const route = routes[url];
+    // // // const url = getActiveRoute();
+    // // // const route = routes[url];
 
-    // Get page instance
-    const page = route();
+    // // // // Get page instance
+    // // // const page = route();
+
+    const page = getRouteHandler();
+    
 
     const transition = transitionHelper({
       updateDOM: async () => {
