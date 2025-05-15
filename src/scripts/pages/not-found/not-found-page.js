@@ -4,7 +4,7 @@ export default class NotFoundPage {
     return `
       <section>
         <center>
-          <img src="../images/Error404.png" alt="404 Not Found" class="not-found__image">
+          <img src="images/Error404.png" alt="404 Not Found" class="not-found__image">
           <h1>Halaman Tidak Ditemukan</h1>
         </center>
       </section>
