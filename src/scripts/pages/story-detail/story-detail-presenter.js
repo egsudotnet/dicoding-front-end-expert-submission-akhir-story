@@ -79,34 +79,4 @@ export default class StoryDetailPresenter {
     return !!(await this.#dbModel.getStoryById(this.#storyId));
   }
   
-  async notifyMe() {
-    try {
-      const response = await this.#apiModel.sendStoryToMeViaNotification(this.#storyId);
-      if (!response.ok) {
-        console.error('notifyMe: response:', response);
-        return;
-      }
-      console.log('notifyMe:', response.message);
-    } catch (error) {
-      console.error('notifyMe: error:', error);
-    }
-  }
-
-  
-  async notifyStoryOwner(commentId) {
-    try {
-      const response = await this.#apiModel.sendCommentToStoryOwnerViaNotification(
-        this.#storyId,
-        commentId,
-      );
-      if (!response.ok) {
-        console.error('notifyStoryOwner: response:', response);
-        return;
-      }
-      console.log('notifyStoryOwner:', response.message);
-    } catch (error) {
-      console.error('notifyStoryOwner: error:', error);
-    }
-  }
-  
 }
