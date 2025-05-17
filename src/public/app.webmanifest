@@ -1,13 +1,11 @@
 {
-  "id": "/#/",
-  "start_url": "/#/new",
-  "scope": "/",
   "name": "EgSuStory App",
   "short_name": "EgSuStory",
   "description": "Aplikasi cerita untuk menceritakan perjalanan dan pengalaman pribadi",
   "display": "standalone",
   "background_color": "#e6f2ff",
   "theme_color": "#80bfff",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "images/icons/mipmap-xxhdpi/ic_launcher.png",
@@ -34,26 +32,31 @@
       "purpose": "maskable"
     }
   ],
-  
   "screenshots": [
     {
-      "src": "images/screenshots/ss_001.png",
-      "sizes": "1280x695",
+      "src": "/images/screenshots/ss-001.png",
+      "sizes": "1280x720",
       "type": "image/png",
-      "form_factor": "wide"
+      "form_factor": "wide",
+      "label": "Beranda Desktop"
     },
     {
-      "src": "images/screenshots/ss_002.png",
-      "sizes": "1280x711",
+      "src": "/images/screenshots/ss-m-002.png",
+      "sizes": "720x1280",
       "type": "image/png",
-      "form_factor": "wide"
-    },
+      "form_factor": "narrow",
+      "label": "Detail Laporan Mobile"
+    }
+  ],
+  "protocol_handlers": [
     {
       "src": "images/screenshots/ss-m-001.png",
       "sizes": "715x1267",
       "type": "image/png",
       "form_factor": "narrow"
     }
+  ]
+}
   ],
 
   "shortcuts": [
