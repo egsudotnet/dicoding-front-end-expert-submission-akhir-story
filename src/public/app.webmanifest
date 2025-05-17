@@ -65,7 +65,7 @@
       ]
     },
     {
-      "name": "Laporan Tersimpan",
+      "name": "Cerita Tersimpan",
       "short_name": "Tersimpan",
       "description": "Lihat daftar cerita tersimpan.",
       "url": "/?source=pwa#/bookmark",
