@@ -76,7 +76,6 @@ export default class StoryDetailPage {
 
     // Actions buttons
     this.#presenter.showSaveButton();
-    this.addNotifyMeEventListener();
   }
 
   populateStoryDetailError(message) {
@@ -124,12 +123,6 @@ export default class StoryDetailPage {
     document.getElementById('story-detail-remove').addEventListener('click', async () => {
       await this.#presenter.removeStory();
       await this.#presenter.showSaveButton();
-    });
-  }
-
-  addNotifyMeEventListener() {
-    document.getElementById('story-detail-notify-me').addEventListener('click', () => {
-      this.#presenter.notifyMe();
     });
   }
 

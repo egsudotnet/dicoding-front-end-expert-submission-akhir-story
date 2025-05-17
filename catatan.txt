@@ -9,3 +9,5 @@ https://zingy-mermaid-3bb149.netlify.app/#/login
 
 npm run build
 npm run serve
+
+pnpm

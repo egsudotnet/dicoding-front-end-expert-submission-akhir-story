@@ -852,3 +852,7 @@ footer {
 .copyright {
   text-align: center;
 }
+
+.not-found__image {
+  margin-top: 100px;
+}

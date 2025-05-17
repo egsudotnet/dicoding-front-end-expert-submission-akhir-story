@@ -5,7 +5,8 @@
   "scripts": {
     "build": "webpack --config ./webpack.prod.js",
     "start-dev": "webpack serve --config ./webpack.dev.js",
-    "serve": "http-server ./dist --port 3000",
+    "serve": "http-server ./dist --port 3026",
+    "build-serve": "webpack --config ./webpack.prod.js && http-server ./dist --port 3026",
     "prettier": "prettier . --check",
     "prettier:write": "prettier . --write",
     "clean": "rm -rf node_modules"
@@ -37,6 +38,7 @@
     "workbox-cacheable-response": "^7.3.0",
     "workbox-precaching": "^7.3.0",
     "workbox-routing": "^7.3.0",
-    "workbox-strategies": "^7.3.0"
+    "workbox-strategies": "^7.3.0",
+    "workbox-window": "^7.3.0"
   }
 }

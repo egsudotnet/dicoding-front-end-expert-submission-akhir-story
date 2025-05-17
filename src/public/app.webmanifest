@@ -4,7 +4,7 @@
   "scope": "/",
   "name": "EgSuStory App",
   "short_name": "EgSuStory",
-  "description": "Aplikasi pelaporan kerusakan fasilitas umum yang memungkinkan warga Indonesia melaporkan masalah secara langsung kepada pemerintah kota. Dengan aplikasi ini, komunikasi antara warga dan pemerintah menjadi lebih efisien dalam menangani dan menindaklanjuti laporan kerusakan fasilitas umum.",
+  "description": "Aplikasi cerita untuk menceritakan perjalanan dan pengalaman pribadi",
   "display": "standalone",
   "background_color": "#e6f2ff",
   "theme_color": "#80bfff",
@@ -54,6 +54,34 @@
       "type": "image/png",
       "form_factor": "narrow"
     }
-  ]    
+  ],
 
+  "shortcuts": [
+    {
+      "name": "Cerita Baru",
+      "short_name": "Baru",
+      "description": "Membuat cerita baru.",
+      "url": "/?source=pwa#/new",
+      "icons": [
+        {
+          "src": "images/icons/add-x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Laporan Tersimpan",
+      "short_name": "Tersimpan",
+      "description": "Lihat daftar cerita tersimpan.",
+      "url": "/?source=pwa#/bookmark",
+      "icons": [
+        {
+          "src": "images/icons/bookmark-x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ]
 }
