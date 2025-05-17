@@ -39,13 +39,6 @@
       "type": "image/png",
       "form_factor": "wide",
       "label": "Beranda Desktop"
-    },
-    {
-      "src": "/images/screenshots/ss-m-002.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Detail Laporan Mobile"
     }
   ],
   "protocol_handlers": [
@@ -55,8 +48,6 @@
       "type": "image/png",
       "form_factor": "narrow"
     }
-  ]
-}
   ],
 
   "shortcuts": [

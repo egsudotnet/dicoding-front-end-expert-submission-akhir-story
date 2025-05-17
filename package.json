@@ -5,14 +5,14 @@
   "scripts": {
     "build": "webpack --config ./webpack.prod.js",
     "start-dev": "webpack serve --config ./webpack.dev.js",
-    "serve": "http-server ./dist --port 3026",
-    "build-serve": "webpack --config ./webpack.prod.js && http-server ./dist --port 3026",
+    "serve": "http-server ./dist --port 3029",
+    "build-serve": "webpack --config ./webpack.prod.js && http-server ./dist --port 3029",
     "prettier": "prettier . --check",
     "prettier:write": "prettier . --write",
     "clean": "rm -rf node_modules"
   },
   "keywords": [],
-  "author": "Your Name <your_email>",
+  "author": "egsudotnet@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.25.7",
