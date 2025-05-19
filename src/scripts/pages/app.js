@@ -91,28 +91,31 @@ export default class App {
     });
   }
 
+  //app.js
   async #setupPushNotification() {
     const pushNotificationTools = document.getElementById('push-notification-tools');
-    
-    const isSubscribed = await isCurrentPushSubscriptionAvailable();
-    if (isSubscribed) {
-      pushNotificationTools.innerHTML = generateUnsubscribeButtonTemplate();
-      document.getElementById('unsubscribe-button').addEventListener('click', () => {
-        unsubscribe().finally(() => {
+
+    if (pushNotificationTools) {
+      const isSubscribed = await isCurrentPushSubscriptionAvailable();
+      if (isSubscribed) {
+        pushNotificationTools.innerHTML = generateUnsubscribeButtonTemplate();
+        document.getElementById('unsubscribe-button')?.addEventListener('click', () => {
+          unsubscribe().finally(() => {
+            this.#setupPushNotification();
+          });
+        });
+        return;
+      }
+
+      pushNotificationTools.innerHTML = generateSubscribeButtonTemplate();
+      document.getElementById('subscribe-button')?.addEventListener('click', () => {
+        subscribe().finally(() => {
           this.#setupPushNotification();
         });
       });
-      return;
     }
-
-    pushNotificationTools.innerHTML = generateSubscribeButtonTemplate();
-    document.getElementById('subscribe-button').addEventListener('click', () => {
-      subscribe().finally(() => {
-        this.#setupPushNotification();
-      });
-    });
   }
- 
+
   async renderPage() {
     // // // const url = getActiveRoute();
     // // // const route = routes[url];
@@ -121,7 +124,7 @@ export default class App {
     // // // const page = route();
 
     const page = getRouteHandler();
-    
+
 
     const transition = transitionHelper({
       updateDOM: async () => {
@@ -134,11 +137,11 @@ export default class App {
     transition.updateCallbackDone.then(() => {
       scrollTo({ top: 0, behavior: 'instant' });
       this.#setupNavigationList();
-      
+
       if (isServiceWorkerAvailable()) {
         this.#setupPushNotification();
       }
-      
+
     });
   }
 }
