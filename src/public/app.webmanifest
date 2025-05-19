@@ -56,7 +56,7 @@
       "name": "Cerita Baru",
       "short_name": "Baru",
       "description": "Membuat cerita baru.",
-      "url": "/?source=pwa#/new",
+      "url": "/#/new",
       "icons": [
         {
           "src": "images/icons/add-x512.png",
@@ -69,7 +69,7 @@
       "name": "Cerita Tersimpan",
       "short_name": "Tersimpan",
       "description": "Lihat daftar cerita tersimpan.",
-      "url": "/?source=pwa#/bookmark",
+      "url": "/#/bookmark",
       "icons": [
         {
           "src": "images/icons/bookmark-x512.png",
