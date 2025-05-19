@@ -1,0 +1,88 @@
+{
+  "name": "EgSuStory App",
+  "short_name": "EgSuStory",
+  "description": "Aplikasi cerita untuk menceritakan perjalanan dan pengalaman pribadi",
+  "lang": "id-ID",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#e6f2ff",
+  "theme_color": "#80bfff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/icons/mipmap-xxhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/mipmap-mdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "48x48",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/icons/mipmap-xhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "96x96",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/icons/mipmap-xxxhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/ss-001.png",
+      "sizes": "1280x719",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Beranda Desktop"
+    },
+    {
+      "src": "images/screenshots/ss-m-001.png",
+      "sizes": "715x1267",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Cerita Baru",
+      "short_name": "Baru",
+      "description": "Membuat cerita baru.",
+      "url": "/#/new",
+      "icons": [
+        {
+          "src": "images/icons/add-x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Cerita Tersimpan",
+      "short_name": "Tersimpan",
+      "description": "Lihat daftar cerita tersimpan.",
+      "url": "/#/bookmark",
+      "icons": [
+        {
+          "src": "images/icons/bookmark-x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+egsus",
+      "url": "https://egsudotnet.github.io/dicoding-front-end-expert-submission-akhir-story/handle?data=%s"
+    }
+  ]
+}
