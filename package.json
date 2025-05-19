@@ -5,8 +5,8 @@
   "scripts": {
     "build": "webpack --config ./webpack.prod.js",
     "start-dev": "webpack serve --config ./webpack.dev.js",
-    "serve": "http-server ./dist --port 3034",
-    "build-serve": "webpack --config ./webpack.prod.js && http-server ./dist --port 3034",
+    "serve": "http-server ./dist --port 3043",
+    "build-serve": "webpack --config ./webpack.prod.js && http-server ./dist --port 3043",
     "prettier": "prettier . --check",
     "prettier:write": "prettier . --write",
     "clean": "rm -rf node_modules"

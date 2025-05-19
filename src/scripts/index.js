@@ -10,18 +10,17 @@ import Camera from './utils/camera';
 import { registerServiceWorker } from './utils';
 
 document.addEventListener('DOMContentLoaded', async () => {
+
+  await registerServiceWorker();
+  console.log('Berhasil mendaftarkan service worker...');
+  
   const app = new App({
     content: document.getElementById('main-content'),
     drawerButton: document.getElementById('drawer-button'),
     drawerNavigation: document.getElementById('navigation-drawer'),
     skipLinkButton: document.getElementById('skip-link'),
   });
-  await app.renderPage();
-
-  await registerServiceWorker();
-
-  // for demonstration purpose-only
-  console.log('Berhasil mendaftarkan service worker...');
+  if(app) await app.renderPage();
   
   window.addEventListener('hashchange', async () => {
     await app.renderPage();
