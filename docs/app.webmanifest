@@ -4,7 +4,6 @@
   "description": "Aplikasi cerita untuk menceritakan perjalanan dan pengalaman pribadi",
   "lang": "id-ID",
   "start_url": "/",
-  "scope": "/",
   "display": "standalone",
   "background_color": "#e6f2ff",
   "theme_color": "#80bfff",
@@ -56,7 +55,7 @@
       "name": "Cerita Baru",
       "short_name": "Baru",
       "description": "Membuat cerita baru.",
-      "url": "/#/new",
+      "url": "/?source=pwa#/new",
       "icons": [
         {
           "src": "images/icons/add-x512.png",
@@ -69,7 +68,7 @@
       "name": "Cerita Tersimpan",
       "short_name": "Tersimpan",
       "description": "Lihat daftar cerita tersimpan.",
-      "url": "/#/bookmark",
+      "url": "/?source=pwa#/bookmark",
       "icons": [
         {
           "src": "images/icons/bookmark-x512.png",
@@ -77,12 +76,6 @@
           "sizes": "512x512"
         }
       ]
-    }
-  ],
-  "protocol_handlers": [
-    {
-      "protocol": "web+egsus",
-      "url": "https://egsudotnet.github.io/dicoding-front-end-expert-submission-akhir-story/handle?data=%s"
     }
   ]
 }
